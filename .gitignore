@@ -1,0 +1,8 @@
+.Rproj.user
+.RData
+.Rhistory
+ws_key
+!.gitkeep
+.idea
+wcapi.json
+wcapi_token.json
