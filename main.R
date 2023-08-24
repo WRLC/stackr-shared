@@ -5,7 +5,7 @@ library(base64enc)
 # Functions for getting OCLC holdings
 wc_get_token <- function() {
   cat("Getting new access token...\n")
-  creds <- fromJSON('./wcapi.json')
+  creds <- fromJSON('./stackr-shared/wcapi.json')
   client_id <- creds$wcapi$client_id
   client_secret <- creds$wcapi$client_secret
 
@@ -23,7 +23,7 @@ wc_get_token <- function() {
   )
 
   myfile <- data.frame(content(token))
-  write(toJSON(myfile), file = "./wcapi_token.json")
+  write(toJSON(myfile), file = "./stackr-shared/wcapi_token.json")
   cat("New access token obtained...\n")
 }
 
@@ -31,7 +31,7 @@ refresh_wc_token <- function(old_token) {
   cat("Refreshing access token...\n")
   refresh_token <- old_token$refresh_token
 
-  creds <- fromJSON('wcapi.json')
+  creds <- fromJSON('./stackr-shared/wcapi.json')
   client_id <- creds$wcapi$client_id
   client_secret <- creds$wcapi$client_secret
 
@@ -48,6 +48,6 @@ refresh_wc_token <- function(old_token) {
           }
   )
   myfile <- data.frame(content(token))
-  write(toJSON(myfile), file = "./wcapi_token.json")
+  write(toJSON(myfile), file = "./stackr-shared/wcapi_token.json")
   cat("Access token refreshed...\n")
 }
